@@ -18,3 +18,11 @@ Route::resource('kupacs', App\Http\Controllers\KupacController::class);
 Route::resource('nabavkas', App\Http\Controllers\NabavkaController::class);
 
 Route::resource('fakturas', App\Http\Controllers\FakturaController::class);
+
+use App\Http\Controllers\PublicProizvodController;
+
+Route::get('/proizvodi', [PublicProizvodController::class, 'index'])
+    ->name('public.proizvodi.index');
+
+Route::get('/proizvodi/{proizvod}', [PublicProizvodController::class, 'show'])
+    ->name('public.proizvodi.show');
