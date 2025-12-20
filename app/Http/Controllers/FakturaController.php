@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class FakturaController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $fakturas = Faktura::all();
 
@@ -20,12 +20,12 @@ class FakturaController extends Controller
         ]);
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         return view('faktura.create');
     }
 
-    public function store(FakturaStoreRequest $request): Response
+    public function store(FakturaStoreRequest $request)
     {
         $faktura = Faktura::create($request->validated());
 
@@ -34,21 +34,21 @@ class FakturaController extends Controller
         return redirect()->route('fakturas.index');
     }
 
-    public function show(Request $request, Faktura $faktura): Response
+    public function show(Request $request, Faktura $faktura)
     {
         return view('faktura.show', [
             'faktura' => $faktura,
         ]);
     }
 
-    public function edit(Request $request, Faktura $faktura): Response
+    public function edit(Request $request, Faktura $faktura)
     {
         return view('faktura.edit', [
             'faktura' => $faktura,
         ]);
     }
 
-    public function update(FakturaUpdateRequest $request, Faktura $faktura): Response
+    public function update(FakturaUpdateRequest $request, Faktura $faktura)
     {
         $faktura->update($request->validated());
 
@@ -57,7 +57,7 @@ class FakturaController extends Controller
         return redirect()->route('fakturas.index');
     }
 
-    public function destroy(Request $request, Faktura $faktura): Response
+    public function destroy(Request $request, Faktura $faktura)
     {
         $faktura->delete();
 

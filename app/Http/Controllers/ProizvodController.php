@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class ProizvodController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $proizvods = Proizvod::all();
 
@@ -20,12 +20,12 @@ class ProizvodController extends Controller
         ]);
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         return view('proizvod.create');
     }
 
-    public function store(ProizvodStoreRequest $request): Response
+    public function store(ProizvodStoreRequest $request)
     {
         $proizvod = Proizvod::create($request->validated());
 
@@ -34,21 +34,21 @@ class ProizvodController extends Controller
         return redirect()->route('proizvods.index');
     }
 
-    public function show(Request $request, Proizvod $proizvod): Response
+    public function show(Request $request, Proizvod $proizvod)
     {
         return view('proizvod.show', [
             'proizvod' => $proizvod,
         ]);
     }
 
-    public function edit(Request $request, Proizvod $proizvod): Response
+    public function edit(Request $request, Proizvod $proizvod)
     {
         return view('proizvod.edit', [
             'proizvod' => $proizvod,
         ]);
     }
 
-    public function update(ProizvodUpdateRequest $request, Proizvod $proizvod): Response
+    public function update(ProizvodUpdateRequest $request, Proizvod $proizvod)
     {
         $proizvod->update($request->validated());
 
@@ -57,7 +57,7 @@ class ProizvodController extends Controller
         return redirect()->route('proizvods.index');
     }
 
-    public function destroy(Request $request, Proizvod $proizvod): Response
+    public function destroy(Request $request, Proizvod $proizvod)
     {
         $proizvod->delete();
 

@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class DobavljacController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $dobavljacs = Dobavljac::all();
 
@@ -20,12 +20,12 @@ class DobavljacController extends Controller
         ]);
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         return view('dobavljac.create');
     }
 
-    public function store(DobavljacStoreRequest $request): Response
+    public function store(DobavljacStoreRequest $request)
     {
         $dobavljac = Dobavljac::create($request->validated());
 
@@ -34,21 +34,21 @@ class DobavljacController extends Controller
         return redirect()->route('dobavljacs.index');
     }
 
-    public function show(Request $request, Dobavljac $dobavljac): Response
+    public function show(Request $request, Dobavljac $dobavljac)
     {
         return view('dobavljac.show', [
             'dobavljac' => $dobavljac,
         ]);
     }
 
-    public function edit(Request $request, Dobavljac $dobavljac): Response
+    public function edit(Request $request, Dobavljac $dobavljac)
     {
         return view('dobavljac.edit', [
             'dobavljac' => $dobavljac,
         ]);
     }
 
-    public function update(DobavljacUpdateRequest $request, Dobavljac $dobavljac): Response
+    public function update(DobavljacUpdateRequest $request, Dobavljac $dobavljac)
     {
         $dobavljac->update($request->validated());
 
@@ -57,7 +57,7 @@ class DobavljacController extends Controller
         return redirect()->route('dobavljacs.index');
     }
 
-    public function destroy(Request $request, Dobavljac $dobavljac): Response
+    public function destroy(Request $request, Dobavljac $dobavljac)
     {
         $dobavljac->delete();
 

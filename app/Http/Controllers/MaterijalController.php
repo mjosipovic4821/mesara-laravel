@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class MaterijalController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $materijals = Materijal::all();
 
@@ -20,12 +20,12 @@ class MaterijalController extends Controller
         ]);
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         return view('materijal.create');
     }
 
-    public function store(MaterijalStoreRequest $request): Response
+    public function store(MaterijalStoreRequest $request)
     {
         $materijal = Materijal::create($request->validated());
 
@@ -34,21 +34,21 @@ class MaterijalController extends Controller
         return redirect()->route('materijals.index');
     }
 
-    public function show(Request $request, Materijal $materijal): Response
+    public function show(Request $request, Materijal $materijal)
     {
         return view('materijal.show', [
             'materijal' => $materijal,
         ]);
     }
 
-    public function edit(Request $request, Materijal $materijal): Response
+    public function edit(Request $request, Materijal $materijal)
     {
         return view('materijal.edit', [
             'materijal' => $materijal,
         ]);
     }
 
-    public function update(MaterijalUpdateRequest $request, Materijal $materijal): Response
+    public function update(MaterijalUpdateRequest $request, Materijal $materijal)
     {
         $materijal->update($request->validated());
 
@@ -57,7 +57,7 @@ class MaterijalController extends Controller
         return redirect()->route('materijals.index');
     }
 
-    public function destroy(Request $request, Materijal $materijal): Response
+    public function destroy(Request $request, Materijal $materijal)
     {
         $materijal->delete();
 

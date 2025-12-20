@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class KupacController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $kupacs = Kupac::all();
 
@@ -20,12 +20,12 @@ class KupacController extends Controller
         ]);
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         return view('kupac.create');
     }
 
-    public function store(KupacStoreRequest $request): Response
+    public function store(KupacStoreRequest $request)
     {
         $kupac = Kupac::create($request->validated());
 
@@ -34,21 +34,21 @@ class KupacController extends Controller
         return redirect()->route('kupacs.index');
     }
 
-    public function show(Request $request, Kupac $kupac): Response
+    public function show(Request $request, Kupac $kupac)
     {
         return view('kupac.show', [
             'kupac' => $kupac,
         ]);
     }
 
-    public function edit(Request $request, Kupac $kupac): Response
+    public function edit(Request $request, Kupac $kupac)
     {
         return view('kupac.edit', [
             'kupac' => $kupac,
         ]);
     }
 
-    public function update(KupacUpdateRequest $request, Kupac $kupac): Response
+    public function update(KupacUpdateRequest $request, Kupac $kupac)
     {
         $kupac->update($request->validated());
 
@@ -57,7 +57,7 @@ class KupacController extends Controller
         return redirect()->route('kupacs.index');
     }
 
-    public function destroy(Request $request, Kupac $kupac): Response
+    public function destroy(Request $request, Kupac $kupac)
     {
         $kupac->delete();
 

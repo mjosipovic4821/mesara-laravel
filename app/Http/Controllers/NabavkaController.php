@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class NabavkaController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $nabavkas = Nabavka::all();
 
@@ -20,12 +20,12 @@ class NabavkaController extends Controller
         ]);
     }
 
-    public function create(Request $request): Response
+    public function create(Request $request)
     {
         return view('nabavka.create');
     }
 
-    public function store(NabavkaStoreRequest $request): Response
+    public function store(NabavkaStoreRequest $request)
     {
         $nabavka = Nabavka::create($request->validated());
 
@@ -34,21 +34,21 @@ class NabavkaController extends Controller
         return redirect()->route('nabavkas.index');
     }
 
-    public function show(Request $request, Nabavka $nabavka): Response
+    public function show(Request $request, Nabavka $nabavka)
     {
         return view('nabavka.show', [
             'nabavka' => $nabavka,
         ]);
     }
 
-    public function edit(Request $request, Nabavka $nabavka): Response
+    public function edit(Request $request, Nabavka $nabavka)
     {
         return view('nabavka.edit', [
             'nabavka' => $nabavka,
         ]);
     }
 
-    public function update(NabavkaUpdateRequest $request, Nabavka $nabavka): Response
+    public function update(NabavkaUpdateRequest $request, Nabavka $nabavka)
     {
         $nabavka->update($request->validated());
 
@@ -57,7 +57,7 @@ class NabavkaController extends Controller
         return redirect()->route('nabavkas.index');
     }
 
-    public function destroy(Request $request, Nabavka $nabavka): Response
+    public function destroy(Request $request, Nabavka $nabavka)
     {
         $nabavka->delete();
 
