@@ -21,13 +21,13 @@ jobs:
           extensions: mbstring, pdo, pdo_mysql
           coverage: none
 
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
       - name: Copy .env
         run: |
           cp .env.example .env
           php artisan key:generate
-
-      - name: Install dependencies
-        run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
       - name: Run migrations
         run: php artisan migrate --env=testing
