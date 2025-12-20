@@ -1,0 +1,98 @@
+models:
+  Dobavljac:
+    naziv: string:120
+    telefon: string:30 nullable
+    email: string:120 nullable
+    relationships:
+      hasMany: Nabavka
+
+  Materijal:
+    naziv: string:120 unique
+    jedinica_mere: string:12
+    zaliha: decimal:12,3 default:0
+    referentna_cena: decimal:12,2 nullable
+    relationships:
+      hasMany: StavkaNabavke
+
+  Proizvod:
+    naziv_proizvoda: string:120 unique
+    tip: string:30 nullable
+    prodajna_cena: decimal:12,2 default:0
+    zaliha: decimal:12,3 default:0
+    aktivan: boolean default:true
+    relationships:
+      hasMany: StavkaFakture
+
+  Radnik:
+    ime: string:60
+    prezime: string:60
+    email: string:120 nullable unique
+    relationships:
+      hasMany: Faktura
+
+  Kupac:
+    naziv_kupca: string:120
+    telefon: string:30 nullable
+    email: string:120 nullable
+    adresa: string:160 nullable
+    grad: string:80 nullable
+    pib: string:20 nullable unique
+    relationships:
+      hasMany: Faktura
+
+  Nabavka:
+    dobavljac_id: id foreign
+    datum_nabavke: date
+    napomena: text nullable
+    ukupno: decimal:12,2 nullable
+    relationships:
+      belongsTo: Dobavljac
+      hasMany: StavkaNabavke
+
+  StavkaNabavke:
+    nabavka_id: id foreign
+    materijal_id: id foreign
+    kolicina: decimal:12,3
+    cena_po_jedinici: decimal:12,2
+    iznos: decimal:12,2
+    relationships:
+      belongsTo:
+        - Nabavka
+        - Materijal
+
+  Faktura:
+    kupac_id: id foreign
+    radnik_id: id foreign
+    datum: date
+    napomena: text nullable
+    ukupno: decimal:12,2 nullable
+    relationships:
+      belongsTo:
+        - Kupac
+        - Radnik
+      hasMany: StavkaFakture
+
+  StavkaFakture:
+    faktura_id: id foreign
+    proizvod_id: id foreign
+    kolicina: decimal:12,3
+    cena: decimal:12,2
+    iznos: decimal:12,2
+    relationships:
+      belongsTo:
+        - Faktura
+        - Proizvod
+
+controllers:
+  Dobavljac:
+    resource: web
+  Materijal:
+    resource: web
+  Proizvod:
+    resource: web
+  Kupac:
+    resource: web
+  Nabavka:
+    resource: web
+  Faktura:
+    resource: web

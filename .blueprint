@@ -1,0 +1,89 @@
+created:
+    - app/Http/Controllers/DobavljacController.php
+    - app/Http/Controllers/MaterijalController.php
+    - app/Http/Controllers/ProizvodController.php
+    - app/Http/Controllers/KupacController.php
+    - app/Http/Controllers/NabavkaController.php
+    - app/Http/Controllers/FakturaController.php
+    - database/factories/DobavljacFactory.php
+    - database/factories/MaterijalFactory.php
+    - database/factories/ProizvodFactory.php
+    - database/factories/RadnikFactory.php
+    - database/factories/KupacFactory.php
+    - database/factories/NabavkaFactory.php
+    - database/factories/StavkaNabavkeFactory.php
+    - database/factories/FakturaFactory.php
+    - database/factories/StavkaFaktureFactory.php
+    - database/migrations/2025_12_20_141207_create_dobavljacs_table.php
+    - database/migrations/2025_12_20_141208_create_materijals_table.php
+    - database/migrations/2025_12_20_141209_create_proizvods_table.php
+    - database/migrations/2025_12_20_141210_create_radniks_table.php
+    - database/migrations/2025_12_20_141211_create_kupacs_table.php
+    - database/migrations/2025_12_20_141212_create_nabavkas_table.php
+    - database/migrations/2025_12_20_141213_create_stavka_nabavkes_table.php
+    - database/migrations/2025_12_20_141214_create_fakturas_table.php
+    - database/migrations/2025_12_20_141215_create_stavka_faktures_table.php
+    - app/Models/Dobavljac.php
+    - app/Models/Materijal.php
+    - app/Models/Proizvod.php
+    - app/Models/Radnik.php
+    - app/Models/Kupac.php
+    - app/Models/Nabavka.php
+    - app/Models/StavkaNabavke.php
+    - app/Models/Faktura.php
+    - app/Models/StavkaFakture.php
+    - tests/Feature/Http/Controllers/DobavljacControllerTest.php
+    - tests/Feature/Http/Controllers/MaterijalControllerTest.php
+    - tests/Feature/Http/Controllers/ProizvodControllerTest.php
+    - tests/Feature/Http/Controllers/KupacControllerTest.php
+    - tests/Feature/Http/Controllers/NabavkaControllerTest.php
+    - tests/Feature/Http/Controllers/FakturaControllerTest.php
+    - app/Http/Requests/DobavljacStoreRequest.php
+    - app/Http/Requests/DobavljacUpdateRequest.php
+    - app/Http/Requests/MaterijalStoreRequest.php
+    - app/Http/Requests/MaterijalUpdateRequest.php
+    - app/Http/Requests/ProizvodStoreRequest.php
+    - app/Http/Requests/ProizvodUpdateRequest.php
+    - app/Http/Requests/KupacStoreRequest.php
+    - app/Http/Requests/KupacUpdateRequest.php
+    - app/Http/Requests/NabavkaStoreRequest.php
+    - app/Http/Requests/NabavkaUpdateRequest.php
+    - app/Http/Requests/FakturaStoreRequest.php
+    - app/Http/Requests/FakturaUpdateRequest.php
+    - resources/views/dobavljac/index.blade.php
+    - resources/views/dobavljac/create.blade.php
+    - resources/views/dobavljac/show.blade.php
+    - resources/views/dobavljac/edit.blade.php
+    - resources/views/materijal/index.blade.php
+    - resources/views/materijal/create.blade.php
+    - resources/views/materijal/show.blade.php
+    - resources/views/materijal/edit.blade.php
+    - resources/views/proizvod/index.blade.php
+    - resources/views/proizvod/create.blade.php
+    - resources/views/proizvod/show.blade.php
+    - resources/views/proizvod/edit.blade.php
+    - resources/views/kupac/index.blade.php
+    - resources/views/kupac/create.blade.php
+    - resources/views/kupac/show.blade.php
+    - resources/views/kupac/edit.blade.php
+    - resources/views/nabavka/index.blade.php
+    - resources/views/nabavka/create.blade.php
+    - resources/views/nabavka/show.blade.php
+    - resources/views/nabavka/edit.blade.php
+    - resources/views/faktura/index.blade.php
+    - resources/views/faktura/create.blade.php
+    - resources/views/faktura/show.blade.php
+    - resources/views/faktura/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
+    Dobavljac: { naziv: 'string:120', telefon: 'string:30 nullable', email: 'string:120 nullable', relationships: { hasMany: Nabavka } }
+    Materijal: { naziv: 'string:120 unique', jedinica_mere: 'string:12', zaliha: 'decimal:12,3 default:0', referentna_cena: 'decimal:12,2 nullable', relationships: { hasMany: StavkaNabavke } }
+    Proizvod: { naziv_proizvoda: 'string:120 unique', tip: 'string:30 nullable', prodajna_cena: 'decimal:12,2 default:0', zaliha: 'decimal:12,3 default:0', aktivan: 'boolean default:true', relationships: { hasMany: StavkaFakture } }
+    Radnik: { ime: 'string:60', prezime: 'string:60', email: 'string:120 nullable unique', relationships: { hasMany: Faktura } }
+    Kupac: { naziv_kupca: 'string:120', telefon: 'string:30 nullable', email: 'string:120 nullable', adresa: 'string:160 nullable', grad: 'string:80 nullable', pib: 'string:20 nullable unique', relationships: { hasMany: Faktura } }
+    Nabavka: { dobavljac_id: 'id foreign', datum_nabavke: date, napomena: 'text nullable', ukupno: 'decimal:12,2 nullable', relationships: { belongsTo: Dobavljac, hasMany: StavkaNabavke } }
+    StavkaNabavke: { nabavka_id: 'id foreign', materijal_id: 'id foreign', kolicina: 'decimal:12,3', cena_po_jedinici: 'decimal:12,2', iznos: 'decimal:12,2', relationships: { belongsTo: 'Nabavka Materijal' } }
+    Faktura: { kupac_id: 'id foreign', radnik_id: 'id foreign', datum: date, napomena: 'text nullable', ukupno: 'decimal:12,2 nullable', relationships: { belongsTo: 'Kupac Radnik', hasMany: StavkaFakture } }
+    StavkaFakture: { faktura_id: 'id foreign', proizvod_id: 'id foreign', kolicina: 'decimal:12,3', cena: 'decimal:12,2', iznos: 'decimal:12,2', relationships: { belongsTo: 'Faktura Proizvod' } }
