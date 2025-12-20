@@ -28,7 +28,7 @@ class NarudzbinaStoreRequest extends FormRequest
 
             'items' => ['required', 'array', 'min:1'],
             'items.*.proizvod_id' => ['required', 'exists:proizvods,id'],
-            'items.*.kolicina' => ['required', 'numeric', 'gt:0']
+            'items.*.kolicina' => ['required', 'numeric', 'gt:0'],
         ];
     }
 }

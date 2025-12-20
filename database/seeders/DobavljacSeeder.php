@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Dobavljac;
+use Illuminate\Database\Seeder;
 
 class DobavljacSeeder extends Seeder
 {

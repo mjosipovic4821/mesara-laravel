@@ -26,7 +26,7 @@ class ProizvodFactory extends Factory
         $suffix = $this->faker->unique()->numberBetween(1, 10000);
 
         return [
-            'naziv_proizvoda' => $this->faker->randomElement($nazivi) . " #{$suffix}",
+            'naziv_proizvoda' => $this->faker->randomElement($nazivi)." #{$suffix}",
             'tip' => $this->faker->randomElement(['gotov', 'sirovina_prodajna']),
             'prodajna_cena' => $this->faker->randomFloat(2, 300, 3500),
             'zaliha' => $this->faker->randomFloat(3, 0, 200),

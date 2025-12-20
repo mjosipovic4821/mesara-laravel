@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NabavkaStoreRequest;
 use App\Http\Requests\NabavkaUpdateRequest;
 use App\Models\Nabavka;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class NabavkaController extends Controller
 {

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->decimal('kolicina', 12, 3);
             $table->decimal('cena', 12, 2);
             $table->decimal('iznos', 12, 2);
-            $table->foreignId('faktura_proizvod_id');
             $table->timestamps();
         });
 

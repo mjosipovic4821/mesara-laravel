@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\KupacStoreRequest;
 use App\Http\Requests\KupacUpdateRequest;
 use App\Models\Kupac;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class KupacController extends Controller
 {

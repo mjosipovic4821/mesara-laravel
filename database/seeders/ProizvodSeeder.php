@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Proizvod;
+use Illuminate\Database\Seeder;
 
 class ProizvodSeeder extends Seeder
 {

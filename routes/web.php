@@ -6,7 +6,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::resource('dobavljacs', App\Http\Controllers\DobavljacController::class);
 
 Route::resource('materijals', App\Http\Controllers\MaterijalController::class);
@@ -26,3 +25,14 @@ Route::get('/proizvodi', [PublicProizvodController::class, 'index'])
 
 Route::get('/proizvodi/{proizvod}', [PublicProizvodController::class, 'show'])
     ->name('public.proizvodi.show');
+
+use App\Http\Controllers\PublicNarudzbinaController;
+
+Route::get('/narudzbina', [PublicNarudzbinaController::class, 'create'])
+    ->name('public.narudzbina.create');
+
+Route::post('/narudzbina', [PublicNarudzbinaController::class, 'store'])
+    ->name('public.narudzbina.store');
+
+Route::get('/narudzbina/{faktura}', [PublicNarudzbinaController::class, 'show'])
+    ->name('public.narudzbina.show');

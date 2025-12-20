@@ -20,7 +20,6 @@ return new class extends Migration
             $table->date('datum');
             $table->text('napomena')->nullable();
             $table->decimal('ukupno', 12, 2)->nullable();
-            $table->foreignId('kupac_radnik_id');
             $table->timestamps();
         });
 

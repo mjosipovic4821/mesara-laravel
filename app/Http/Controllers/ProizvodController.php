@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProizvodStoreRequest;
 use App\Http\Requests\ProizvodUpdateRequest;
 use App\Models\Proizvod;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class ProizvodController extends Controller
 {

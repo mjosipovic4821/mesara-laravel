@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DobavljacStoreRequest;
 use App\Http\Requests\DobavljacUpdateRequest;
 use App\Models\Dobavljac;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class DobavljacController extends Controller
 {
