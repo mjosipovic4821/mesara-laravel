@@ -3,8 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/raspored', function () {
+    return view('raspored.index');
+})->name('raspored.index');
 
 Route::resource('dobavljacs', App\Http\Controllers\DobavljacController::class);
 
