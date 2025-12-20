@@ -11,9 +11,7 @@ class StavkaFakture extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * Mass assignable attributes.
      */
     protected $fillable = [
         'faktura_id',
@@ -21,13 +19,10 @@ class StavkaFakture extends Model
         'kolicina',
         'cena',
         'iznos',
-        'faktura_proizvod_id',
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * Attribute casting.
      */
     protected function casts(): array
     {
@@ -38,20 +33,20 @@ class StavkaFakture extends Model
             'kolicina' => 'decimal:3',
             'cena' => 'decimal:2',
             'iznos' => 'decimal:2',
-            'faktura_proizvod_id' => 'integer',
         ];
     }
 
-    public function fakturaProizvod(): BelongsTo
-    {
-        return $this->belongsTo(FakturaProizvod::class);
-    }
-
+    /**
+     * Faktura kojoj stavka pripada.
+     */
     public function faktura(): BelongsTo
     {
         return $this->belongsTo(Faktura::class);
     }
 
+    /**
+     * Proizvod koji je na stavci.
+     */
     public function proizvod(): BelongsTo
     {
         return $this->belongsTo(Proizvod::class);

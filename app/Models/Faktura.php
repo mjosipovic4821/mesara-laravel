@@ -12,9 +12,7 @@ class Faktura extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * Mass assignable attributes.
      */
     protected $fillable = [
         'kupac_id',
@@ -22,13 +20,10 @@ class Faktura extends Model
         'datum',
         'napomena',
         'ukupno',
-        'kupac_radnik_id',
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * Attribute casting.
      */
     protected function casts(): array
     {
@@ -38,25 +33,28 @@ class Faktura extends Model
             'radnik_id' => 'integer',
             'datum' => 'date',
             'ukupno' => 'decimal:2',
-            'kupac_radnik_id' => 'integer',
         ];
     }
 
-    public function kupacRadnik(): BelongsTo
-    {
-        return $this->belongsTo(KupacRadnik::class);
-    }
-
+    /**
+     * Kupac kome je izdata faktura.
+     */
     public function kupac(): BelongsTo
     {
         return $this->belongsTo(Kupac::class);
     }
 
+    /**
+     * Radnik koji je izdao fakturu.
+     */
     public function radnik(): BelongsTo
     {
         return $this->belongsTo(Radnik::class);
     }
 
+    /**
+     * Stavke fakture.
+     */
     public function stavkaFaktures(): HasMany
     {
         return $this->hasMany(StavkaFakture::class);
