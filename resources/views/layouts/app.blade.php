@@ -1,27 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
     <title>Mesara</title>
-</head>
-<body style="font-family: Arial, sans-serif; margin: 20px;">
-    <header style="display:flex; gap:12px; align-items:center; margin-bottom:18px;">
-        <strong style="font-size:18px;">Mesara</strong>
-        <nav style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a href="/proizvodi">Public katalog</a>
-            <span>|</span>
-            <a href="/proizvods">Proizvodi</a>
-            <a href="/dobavljacs">Dobavljači</a>
-            <a href="/materijals">Materijali</a>
-            <a href="/kupacs">Kupci</a>
-            <a href="/nabavkas">Nabavke</a>
-            <a href="/fakturas">Fakture</a>
-        </nav>
-    </header>
 
-    <main>
-        @yield('content')
-    </main>
+    <!-- Bootstrap 5 CDN (CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="{{ route('dashboard') }}">Mesara</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('public.narudzbina.create') }}">Nova prodaja</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('nabavkas.index') }}">Nabavka</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('raspored.index') }}">Raspored</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    @yield('content')
+</main>
+
+<!-- Bootstrap 5 CDN (JS) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
