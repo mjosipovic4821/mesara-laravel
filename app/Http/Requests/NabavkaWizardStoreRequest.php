@@ -10,6 +10,7 @@ class NabavkaWizardStoreRequest extends FormRequest
     {
         return true; // bitno da nije false
     }
+
     protected function prepareForValidation(): void
     {
         $items = $this->input('items', []);
@@ -24,8 +25,9 @@ class NabavkaWizardStoreRequest extends FormRequest
         }));
 
         $this->merge(['items' => $items]);
-        
+
     }
+
     public function rules(): array
     {
         return [
