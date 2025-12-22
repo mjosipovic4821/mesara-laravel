@@ -19,7 +19,7 @@
                     <a class="nav-link" href="{{ route('public.narudzbina.create') }}">Nova prodaja</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('nabavkas.index') }}">Nabavka</a>
+                    <a class="nav-link" href="{{ route('nabavka.wizard.create') }}">Nabavka</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('raspored.index') }}">Raspored</a>
