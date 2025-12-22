@@ -20,7 +20,6 @@ return new class extends Migration
             $table->decimal('kolicina', 12, 3);
             $table->decimal('cena_po_jedinici', 12, 2);
             $table->decimal('iznos', 12, 2);
-            $table->foreignId('nabavka_materijal_id');
             $table->timestamps();
         });
 

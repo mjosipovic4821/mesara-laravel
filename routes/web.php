@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NabavkaWizardController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
@@ -22,6 +23,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('kupacs', App\Http\Controllers\KupacController::class);
     Route::resource('nabavkas', App\Http\Controllers\NabavkaController::class);
     Route::resource('fakturas', App\Http\Controllers\FakturaController::class);
+    Route::get('/nabavka/novo', [NabavkaWizardController::class, 'create'])->name('nabavka.wizard.create');
+    Route::post('/nabavka/novo', [NabavkaWizardController::class, 'store'])->name('nabavka.wizard.store');
 });
 
 use App\Http\Controllers\PublicProizvodController;

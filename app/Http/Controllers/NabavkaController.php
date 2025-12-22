@@ -34,6 +34,8 @@ class NabavkaController extends Controller
 
     public function show(Request $request, Nabavka $nabavka)
     {
+        $nabavka->load(['dobavljac', 'stavkaNabavkes.materijal']);
+
         return view('nabavka.show', [
             'nabavka' => $nabavka,
         ]);

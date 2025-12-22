@@ -23,7 +23,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Nabavka</h5>
                     <p class="card-text">Unos nabavke i stavki nabavke, ažuriranje zaliha.</p>
-                    <a class="btn btn-outline-primary w-100" href="{{ route('nabavkas.index') }}">
+                    <a class="btn btn-outline-primary w-100" href="{{ route('nabavka.wizard.create') }}">
                         Otvori nabavke
                     </a>
                 </div>
