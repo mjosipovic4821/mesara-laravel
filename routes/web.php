@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.attempt');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
     return view('dashboard');
@@ -10,17 +15,14 @@ Route::get('/raspored', function () {
     return view('raspored.index');
 })->name('raspored.index');
 
-Route::resource('dobavljacs', App\Http\Controllers\DobavljacController::class);
-
-Route::resource('materijals', App\Http\Controllers\MaterijalController::class);
-
-Route::resource('proizvods', App\Http\Controllers\ProizvodController::class);
-
-Route::resource('kupacs', App\Http\Controllers\KupacController::class);
-
-Route::resource('nabavkas', App\Http\Controllers\NabavkaController::class);
-
-Route::resource('fakturas', App\Http\Controllers\FakturaController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('dobavljacs', App\Http\Controllers\DobavljacController::class);
+    Route::resource('materijals', App\Http\Controllers\MaterijalController::class);
+    Route::resource('proizvods', App\Http\Controllers\ProizvodController::class);
+    Route::resource('kupacs', App\Http\Controllers\KupacController::class);
+    Route::resource('nabavkas', App\Http\Controllers\NabavkaController::class);
+    Route::resource('fakturas', App\Http\Controllers\FakturaController::class);
+});
 
 use App\Http\Controllers\PublicProizvodController;
 

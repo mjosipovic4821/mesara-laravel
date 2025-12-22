@@ -18,5 +18,13 @@ class DatabaseSeeder extends Seeder
             KupacSeeder::class,
             RadnikSeeder::class,
         ]);
+        \App\Models\User::updateOrCreate(
+            ['email' => 'admin@mesara.test'],
+            [
+                'name' => 'Admin',
+                'password' => \Illuminate\Support\Facades\Hash::make('Password123!'),
+            ]
+        );
+
     }
 }

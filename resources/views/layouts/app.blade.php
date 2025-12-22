@@ -24,6 +24,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('raspored.index') }}">Raspored</a>
                 </li>
+                @auth
+                    <li class="nav-item ms-2">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="btn btn-outline-light btn-sm">Logout</button>
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-outline-light btn-sm" href="{{ route('login') }}">Login</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>
