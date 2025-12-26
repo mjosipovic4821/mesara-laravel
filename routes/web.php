@@ -19,8 +19,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-// Dashboard (kod tebe je public; ako želiš da bude samo za ulogovane,
-// prebaci ovu rutu u auth grupu)
+// Dashboard
 Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');

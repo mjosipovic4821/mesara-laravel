@@ -8,7 +8,7 @@ class NabavkaWizardStoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // bitno da nije false
+        return true;
     }
 
     protected function prepareForValidation(): void
