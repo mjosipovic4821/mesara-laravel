@@ -45,7 +45,7 @@ class NabavkaWizardController extends Controller
                     'iznos' => $iznos,
                 ]);
 
-                // ažuriranje zaliha materijala (bonus, ali super za poene)
+                // ažuriranje zaliha materijala
                 Materijal::whereKey($item['materijal_id'])->increment('zaliha', $item['kolicina']);
             }
 
