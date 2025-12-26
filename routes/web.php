@@ -1,20 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DobavljacController;
-use App\Http\Controllers\MaterijalController;
-use App\Http\Controllers\ProizvodController;
-use App\Http\Controllers\KupacController;
-use App\Http\Controllers\NabavkaController;
 use App\Http\Controllers\FakturaController;
-
+use App\Http\Controllers\KupacController;
+use App\Http\Controllers\MaterijalController;
+use App\Http\Controllers\NabavkaController;
 use App\Http\Controllers\NabavkaWizardController;
-use App\Http\Controllers\RasporedController;
-
-use App\Http\Controllers\PublicProizvodController;
+use App\Http\Controllers\ProizvodController;
 use App\Http\Controllers\PublicNarudzbinaController;
+use App\Http\Controllers\PublicProizvodController;
+use App\Http\Controllers\RasporedController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +46,6 @@ Route::post('/narudzbina', [PublicNarudzbinaController::class, 'store'])
 
 Route::get('/narudzbina/{faktura}', [PublicNarudzbinaController::class, 'show'])
     ->name('public.narudzbina.show');
-
 
 /*
 |--------------------------------------------------------------------------
